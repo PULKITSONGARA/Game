@@ -1,0 +1,103 @@
+<html>
+    <head>
+    <h1 style="color: purple; align:center"><marquee>Stone Paper Scissor Game</marquee></h1>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#start").click(function(){
+                    $(".btn1").toggle('slow');
+                });
+            });
+        </script>
+        <style>
+            .btn1{
+                display: none;
+                alignment-adjust: center;
+                font-size: 32px;
+            }
+            body{
+                color: blueviolet;
+                position: relative;
+            }
+/*        #result {
+            width: 100px;
+            height: 100px;
+            background: red;
+            -webkit-transition: width 2s, height 2s, -webkit-transform 2s;  Safari 
+            transition: width 2s, height 2s, transform 2s;
+            }
+        #result:hover {
+            width: 300px;
+            height: 300px;
+            -webkit-transform: rotate(180deg);  Safari 
+            transform: rotate(180deg);
+            }*/
+        </style>
+    </head>
+    <body background="bgImage.jpg" >
+        <center> 
+            <div class="container">
+                <button type="button"class="btn-primary btn-lg" style="width:200px; margin-top:2cm" id="start">Start</button><br><br><br><br>
+                <label class="btn1"><b>Do you choose stone, paper or scissors?</b></label><br><br>
+                <button class="btn1" onClick='choose("stone"), compare(userChoice, computerChoice)'>Stone</button>
+                <button class="btn1" onClick='choose("paper"), compare(userChoice, computerChoice)'>Paper</button>
+                <button class="btn1" onClick='choose("scissors"), compare(userChoice, computerChoice)'>Scissors</button><br><br><br>
+                <div class="btn1" id="result"></div>
+            </div>
+        </center>
+        <div style="width: 300px">
+            <p align="center">Rules</p>
+            <img src="Rules.png">
+        </div>
+    </body>
+    <script>
+               
+                var userChoice;
+                var choose = function(choice) {
+                userChoice = choice;
+                }
+                var computerChoice = Math.random();
+                if (computerChoice < 0.34) {
+                        computerChoice = "stone";
+                } else if(computerChoice <= 0.67) {
+                        computerChoice = "paper";
+                } else {
+                        computerChoice = "scissors";
+                } 
+                console.log("Computer Choice: " + computerChoice);
+                var compare=function(choice1,choice2)
+                {
+
+                        if(choice1===choice2)
+                            document.getElementById("result").innerHTML = "Tie!";
+                        else if(choice1==="stone")
+                        {
+                            if(choice2 === "scissors")
+                            document.getElementById("result").innerHTML = "You Win!";
+                            else
+                            document.getElementById("result").innerHTML = "You Lose!";
+                            }
+                        else if(choice1==="paper")
+                        {
+                            if(choice2 === "stone")
+                           document.getElementById("result").innerHTML = "You Win!";
+                            else
+                            document.getElementById("result").innerHTML = "You Lose!";
+                            }
+                        else if(choice1==="scissors")
+                        {
+                            if(choice2 === "stone")
+                            document.getElementById("result").innerHTML = "You Lose!";
+                            else
+                            document.getElementById("result").innerHTML = "You Win!";
+                            }
+                        else
+                            document.getElementById("result").innerHTML = "ERROR!";
+                    };
+                
+                    compare(userChoice, computerChoice);
+                
+       </script>
+</html>
